@@ -5,6 +5,7 @@ export const site = {
   branch: 'Computer Science and Engineering (AI & ML)',
   university: 'Jaypee University of Engineering and Technology',
   batch: '2025 – 2029',
+  email: 'bhargavadev772@gmail.com',
   github: 'https://github.com/bhargavadev772-dot',
   linkedin: 'https://www.linkedin.com/in/dev-bhargava-976b28375',
   leetcode: 'https://leetcode.com/u/Dev_bhargava006/',
