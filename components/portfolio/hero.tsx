@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { ArrowRight, ArrowDown, MapPin, Sparkles } from 'lucide-react'
+import { ArrowRight, ArrowDown, MapPin, Sparkles, Download } from 'lucide-react'
 import { site } from '@/lib/site'
 import { GithubIcon, LeetcodeIcon, LinkedinIcon } from './brand-icons'
 
@@ -94,6 +94,15 @@ export function Hero() {
             >
               <Sparkles className="size-4 text-brand-blue" />
               Let's connect
+            </a>
+
+            <a
+              href="/Dev_Bhargava_Resume_Final.pdf"
+              download="Dev_Bhargava_Resume_Final.pdf"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-violet/40 bg-brand-violet/10 px-6 py-3 font-medium text-foreground backdrop-blur transition-all hover:scale-[1.03] hover:bg-brand-violet/20 sm:w-auto"
+            >
+              <Download className="size-4 text-brand-violet" />
+              Download Resume
             </a>
           </div>
 
