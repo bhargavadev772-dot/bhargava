@@ -1,12 +1,13 @@
-import { ArrowUpRight, Mail } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { site } from '@/lib/site'
-import { GithubIcon, LinkedinIcon } from './brand-icons'
+import { GithubIcon, LeetcodeIcon, LinkedinIcon } from './brand-icons'
+import { ProfessionalPresence } from './professional-presence'
 import { Reveal } from './reveal'
 
 const channels = [
-  { label: 'Email', value: site.email, href: `mailto:${site.email}`, icon: Mail, external: false },
-  { label: 'GitHub', value: site.github.replace('https://', ''), href: site.github, icon: GithubIcon, external: true },
   { label: 'LinkedIn', value: site.linkedin.replace('https://www.', ''), href: site.linkedin, icon: LinkedinIcon, external: true },
+  { label: 'GitHub', value: site.github.replace('https://', ''), href: site.github, icon: GithubIcon, external: true },
+  { label: 'LeetCode', value: site.leetcode.replace('https://', ''), href: site.leetcode, icon: LeetcodeIcon, external: true },
 ]
 
 export function Contact() {
@@ -28,14 +29,16 @@ export function Contact() {
                 <span className="text-gradient">great together</span>
               </h2>
               <p className="mt-4 text-pretty leading-relaxed text-muted-foreground md:text-lg">
-                {"I'm open to internships, collaborations and exciting opportunities. Whether you have a question or just want to say hi, my inbox is always open."}
+                {"I'm open to internships, collaborations and exciting opportunities. The best way to reach me is through LinkedIn."}
               </p>
               <a
-                href={`mailto:${site.email}`}
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 font-medium text-white shadow-xl shadow-brand-violet/30 transition-transform hover:scale-[1.03]"
               >
-                <Mail className="size-4" />
-                Say hello
+                <LinkedinIcon className="size-4" />
+                Connect on LinkedIn
               </a>
             </div>
 
@@ -59,6 +62,8 @@ export function Contact() {
                 </li>
               ))}
             </ul>
+
+            <ProfessionalPresence />
           </div>
         </Reveal>
       </div>

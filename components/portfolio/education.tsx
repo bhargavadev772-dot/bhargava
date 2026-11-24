@@ -3,12 +3,10 @@ import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
 const coursework = [
-  'Programming in C',
-  'Object-Oriented Programming',
+  'Artificial Intelligence & Machine Learning',
   'Data Structures & Algorithms',
   'Database Management Systems',
-  'Discrete Mathematics',
-  'Artificial Intelligence',
+  'Programming in C, C++ & Python',
 ]
 
 export function Education() {
@@ -28,7 +26,10 @@ export function Education() {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-xl font-semibold md:text-2xl">Bachelor of Technology (B.Tech)</h3>
-                    <p className="mt-1 text-muted-foreground">Computer Science & Engineering</p>
+                    <p className="mt-1 text-muted-foreground">Computer Science and Engineering (AI & ML)</p>
+                    <p className="mt-1 text-sm font-medium text-brand-blue">
+                      Jaypee University of Engineering and Technology
+                    </p>
                   </div>
                   <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 font-mono text-sm">
                     <CalendarDays className="size-4 text-brand-blue" />
@@ -47,7 +48,7 @@ export function Education() {
                 </p>
 
                 <h4 className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  Relevant coursework
+                  Areas of focus
                 </h4>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {coursework.map((course) => (

@@ -10,8 +10,8 @@ const highlights = [
 ]
 
 const stats = [
-  { value: '7+', label: 'Core skills' },
-  { value: '5+', label: 'Projects built' },
+  { value: 'B.Tech', label: 'CSE (AI & ML)' },
+  { value: 'JUET', label: 'University' },
   { value: '2029', label: 'Graduating' },
 ]
 
@@ -26,8 +26,11 @@ export function About() {
             <div className="space-y-5 text-pretty text-lg leading-relaxed text-muted-foreground">
               <p>
                 {"I'm "}
-                <span className="font-medium text-foreground">Dev Bhargava</span>, a B.Tech student and aspiring
-                software developer with a strong foundation in programming, data structures and database systems.
+                <span className="font-medium text-foreground">Dev Bhargava</span>, a B.Tech student in Computer
+                Science and Engineering (AI & ML) at{' '}
+                <span className="font-medium text-foreground">Jaypee University of Engineering and Technology</span>{' '}
+                (batch 2025–2029), and an aspiring software developer building a strong foundation in programming,
+                data structures and database systems.
               </p>
               <p>
                 {"I'm especially drawn to "}

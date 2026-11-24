@@ -1,6 +1,6 @@
-import { ArrowUp, Mail } from 'lucide-react'
+import { ArrowUp } from 'lucide-react'
 import { navLinks, site } from '@/lib/site'
-import { GithubIcon, LinkedinIcon } from './brand-icons'
+import { GithubIcon, LeetcodeIcon, LinkedinIcon } from './brand-icons'
 
 export function Footer() {
   return (
@@ -28,7 +28,7 @@ export function Footer() {
             {[
               { href: site.github, label: 'GitHub', icon: GithubIcon, external: true },
               { href: site.linkedin, label: 'LinkedIn', icon: LinkedinIcon, external: true },
-              { href: `mailto:${site.email}`, label: 'Email', icon: Mail, external: false },
+              { href: site.leetcode, label: 'LeetCode', icon: LeetcodeIcon, external: true },
             ].map((item) => (
               <a
                 key={item.label}

@@ -3,13 +3,13 @@ import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
 const skills = [
-  { name: 'C', icon: Terminal, level: 85, category: 'Language', note: 'Procedural programming, pointers & memory' },
-  { name: 'C++', icon: Cpu, level: 88, category: 'Language', note: 'OOP, STL and competitive programming' },
-  { name: 'Python', icon: FileCode2, level: 90, category: 'Language', note: 'Scripting, automation & data science' },
-  { name: 'SQL', icon: Database, level: 80, category: 'Database', note: 'Queries, joins, views & optimization' },
-  { name: 'Data Structures & Algorithms', icon: Binary, level: 85, category: 'Core CS', note: 'Trees, graphs, DP & complexity analysis' },
-  { name: 'DBMS', icon: Network, level: 80, category: 'Core CS', note: 'ER modelling, normalization & transactions' },
-  { name: 'AI & Machine Learning', icon: BrainCircuit, level: 78, category: 'Domain', note: 'Supervised learning, model training & evaluation' },
+  { name: 'C', icon: Terminal, category: 'Language', note: 'Procedural programming, pointers & memory' },
+  { name: 'C++', icon: Cpu, category: 'Language', note: 'OOP, STL and problem solving' },
+  { name: 'Python', icon: FileCode2, category: 'Language', note: 'Scripting, automation & data analysis' },
+  { name: 'SQL', icon: Database, category: 'Database', note: 'Queries, joins and views' },
+  { name: 'Data Structures & Algorithms', icon: Binary, category: 'Core CS', note: 'Trees, graphs, DP & complexity analysis' },
+  { name: 'DBMS', icon: Network, category: 'Core CS', note: 'ER modelling, normalization & database design' },
+  { name: 'AI & Machine Learning', icon: BrainCircuit, category: 'Domain', note: 'Model training & evaluation' },
 ]
 
 export function Skills() {
@@ -41,22 +41,7 @@ export function Skills() {
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">{skill.name}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{skill.note}</p>
-                <div className="mt-5">
-                  <div className="mb-2 flex justify-between text-xs text-muted-foreground">
-                    <span>Proficiency</span>
-                    <span className="font-mono">{skill.level}%</span>
-                  </div>
-                  <div
-                    className="h-1.5 overflow-hidden rounded-full bg-secondary"
-                    role="progressbar"
-                    aria-label={`${skill.name} proficiency`}
-                    aria-valuenow={skill.level}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  >
-                    <div className="h-full rounded-full bg-gradient-brand" style={{ width: `${skill.level}%` }} />
-                  </div>
-                </div>
+                <div aria-hidden="true" className="mt-5 h-px w-full bg-gradient-brand opacity-30 transition-opacity group-hover:opacity-80" />
               </article>
             </Reveal>
           ))}

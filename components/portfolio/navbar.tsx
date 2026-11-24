@@ -70,7 +70,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href={`mailto:${site.email}`}
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-full bg-gradient-brand px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-violet/20 transition-transform hover:scale-[1.03] sm:inline-flex"
           >
             Hire me
@@ -113,7 +115,9 @@ export function Navbar() {
           ))}
           <li className="pb-4 pt-2">
             <a
-              href={`mailto:${site.email}`}
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               tabIndex={open ? 0 : -1}
               className="block rounded-lg bg-gradient-brand px-3 py-3 text-center font-medium text-white"
             >

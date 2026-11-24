@@ -1,45 +1,15 @@
 import Image from 'next/image'
-import { ArrowUpRight, BarChart3, BookOpen, CloudRain, Library, Route, ShieldAlert } from 'lucide-react'
+import { AlertTriangle, ArrowUpRight, BarChart3, CloudRain, Droplets, Mountain, Wrench } from 'lucide-react'
 import { site } from '@/lib/site'
 import { GithubIcon } from './brand-icons'
 import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
 const featuredFeatures = [
-  { icon: CloudRain, label: 'Rainfall & soil moisture analysis' },
-  { icon: BarChart3, label: 'ML-based risk prediction' },
-  { icon: ShieldAlert, label: 'Real-time early alerts' },
-]
-
-const projects = [
-  {
-    icon: Route,
-    title: 'Pathfinding Visualizer',
-    description: 'Interactive visualization of BFS, DFS, Dijkstra and A* algorithms on a grid to understand graph traversal.',
-    tags: ['C++', 'DSA', 'Graphs'],
-    repo: `${site.github}/pathfinding-visualizer`,
-  },
-  {
-    icon: Library,
-    title: 'Library Management System',
-    description: 'A relational database-backed system to manage books, members and issue/return records with optimized SQL queries.',
-    tags: ['SQL', 'DBMS', 'Python'],
-    repo: `${site.github}/library-management-system`,
-  },
-  {
-    icon: BarChart3,
-    title: 'Student Performance Predictor',
-    description: 'A machine learning model that predicts academic outcomes from study patterns and attendance data.',
-    tags: ['Python', 'Scikit-learn', 'ML'],
-    repo: `${site.github}/student-performance-predictor`,
-  },
-  {
-    icon: BookOpen,
-    title: 'DSA Problem Archive',
-    description: 'A curated collection of 200+ solved problems on arrays, trees, graphs and dynamic programming with explanations.',
-    tags: ['C++', 'Algorithms', 'LeetCode'],
-    repo: `${site.github}/dsa-archive`,
-  },
+  { icon: CloudRain, label: 'Rainfall & humidity analysis' },
+  { icon: Droplets, label: 'Soil moisture monitoring' },
+  { icon: Mountain, label: 'Slope-based risk estimation' },
+  { icon: BarChart3, label: 'AI-driven landslide risk scoring' },
 ]
 
 export function Projects() {
@@ -49,7 +19,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Projects"
           title="Things I've built"
-          description="A selection of programming and academic projects — from AI systems to core computer science."
+          description="Projects where I apply AI, programming and core computer science to real-world problems."
         />
 
         <Reveal>
@@ -66,7 +36,6 @@ export function Projects() {
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  priority={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-card" />
               </div>
@@ -83,15 +52,14 @@ export function Projects() {
                 <h3 className="mt-5 text-3xl font-semibold tracking-tight md:text-4xl">LandGuard AI</h3>
                 <p className="mt-2 font-medium text-gradient">AI-Based Landslide Early Warning System</p>
                 <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-                  An intelligent system that analyzes environmental parameters such as rainfall, soil moisture, slope
-                  and seismic activity to predict landslide risk and issue timely warnings — helping communities and
-                  authorities act before disaster strikes.
+                  An AI-powered disaster management system that analyzes rainfall, soil moisture, slope and humidity to
+                  estimate landslide risk.
                 </p>
 
-                <ul className="mt-6 grid gap-3">
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                   {featuredFeatures.map((feature) => (
                     <li key={feature.label} className="flex items-center gap-3 text-sm">
-                      <span className="grid size-8 place-items-center rounded-lg bg-secondary text-brand-blue">
+                      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-secondary text-brand-blue">
                         <feature.icon className="size-4" />
                       </span>
                       {feature.label}
@@ -99,79 +67,62 @@ export function Projects() {
                   ))}
                 </ul>
 
-                <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
-                  {['Python', 'Machine Learning', 'Pandas', 'Scikit-learn', 'Data Analysis'].map((tag) => (
-                    <li key={tag} className="rounded-md bg-secondary px-2.5 py-1 font-mono text-xs text-muted-foreground">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
+                <div role="status" className="mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/5 p-4">
+                  <p className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-amber-300">
+                    <AlertTriangle className="size-4" />
+                    Live demo temporarily unavailable
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    The live application is currently unavailable due to a server issue. The project is under
+                    maintenance. Improvements are in progress.
+                  </p>
+                </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={`${site.github}/landguard-ai`}
+                    href={site.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-brand-violet/20 transition-transform hover:scale-[1.03]"
                   >
                     <GithubIcon className="size-4" />
-                    View source
+                    View source code
                   </a>
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-secondary"
+                  <span
+                    aria-disabled="true"
+                    className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground opacity-70"
                   >
-                    Request demo
-                    <ArrowUpRight className="size-4" />
-                  </a>
+                    <Wrench className="size-4" />
+                    Live demo under maintenance
+                  </span>
                 </div>
               </div>
             </div>
           </article>
         </Reveal>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <Reveal key={project.title} delay={(i % 2) * 100}>
-              <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-2xl hover:shadow-brand-violet/10 md:p-7">
-                <div className="flex items-start justify-between">
-                  <span className="grid size-12 place-items-center rounded-xl border border-border bg-secondary text-brand-violet">
-                    <project.icon className="size-6" />
-                  </span>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-all after:absolute after:inset-0 after:rounded-2xl group-hover:border-brand-violet/40 group-hover:text-foreground"
-                  >
-                    <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    <span className="sr-only">View {project.title} on GitHub</span>
-                  </a>
-                </div>
-                <h3 className="mt-5 text-xl font-semibold">{project.title}</h3>
-                <p className="mt-2 flex-1 text-pretty leading-relaxed text-muted-foreground">{project.description}</p>
-                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies">
-                  {project.tags.map((tag) => (
-                    <li key={tag} className="rounded-md bg-secondary px-2.5 py-1 font-mono text-xs text-muted-foreground">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="mt-10 text-center">
+        <Reveal className="mt-6">
           <a
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="group flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-card/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-2xl hover:shadow-brand-violet/10 sm:flex-row sm:items-center md:p-8"
           >
-            <GithubIcon className="size-4" />
-            See more on GitHub
-            <ArrowUpRight className="size-4" />
+            <div className="flex items-center gap-4">
+              <span className="grid size-12 shrink-0 place-items-center rounded-xl border border-border bg-secondary text-foreground">
+                <GithubIcon className="size-6" />
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold">More programming & academic projects</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Explore my repositories and ongoing work on GitHub.
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-brand-blue transition-colors group-hover:text-brand-violet">
+              Visit GitHub
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </span>
           </a>
         </Reveal>
       </div>
