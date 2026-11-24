@@ -2,7 +2,40 @@ import { Award, BadgeCheck, ExternalLink } from 'lucide-react'
 import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
-const certifications = [
+type Certification = {
+  title: string
+  issuer: string
+  date: string
+  skills: string[]
+  url: string
+  isDocument?: boolean
+}
+
+const certifications: Certification[] = [
+  {
+    title: 'C++ Standard Template Library Algorithms and Operations',
+    issuer: 'Infosys Springboard',
+    date: 'Nov 2026',
+    skills: ['C++', 'STL', 'Algorithms'],
+    url: '/certificate/cpp-stl.pdf',
+    isDocument: true,
+  },
+  {
+    title: 'Database Fundamentals: Database Concepts',
+    issuer: 'Infosys Springboard',
+    date: 'Nov 2026',
+    skills: ['DBMS', 'Database Concepts'],
+    url: '/certificate/database-fundamentals.pdf',
+    isDocument: true,
+  },
+  {
+    title: 'Database Design',
+    issuer: 'Infosys Springboard',
+    date: 'Nov 2026',
+    skills: ['Data Modeling', 'Schema Design'],
+    url: '/certificate/database-design.pdf',
+    isDocument: true,
+  },
   {
     title: 'Python for Data Science',
     issuer: 'NPTEL',
@@ -87,7 +120,7 @@ export function Certifications() {
                   rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue transition-colors hover:text-brand-violet"
                 >
-                  View credential
+                  {cert.isDocument ? 'View Certificate' : 'View credential'}
                   <ExternalLink className="size-3.5" />
                   <span className="sr-only">for {cert.title}</span>
                 </a>
