@@ -1,72 +1,148 @@
-import { ArrowUpRight } from 'lucide-react'
+'use client'
+
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { ArrowRight, ArrowDown, MapPin, Sparkles } from 'lucide-react'
 import { site } from '@/lib/site'
 import { GithubIcon, LeetcodeIcon, LinkedinIcon } from './brand-icons'
-import { ProfessionalPresence } from './professional-presence'
-import { Reveal } from './reveal'
 
-const channels = [
-  { label: 'LinkedIn', value: site.linkedin.replace('https://www.', ''), href: site.linkedin, icon: LinkedinIcon, external: true },
-  { label: 'GitHub', value: site.github.replace('https://', ''), href: site.github, icon: GithubIcon, external: true },
-  { label: 'LeetCode', value: site.leetcode.replace('https://', ''), href: site.leetcode, icon: LeetcodeIcon, external: true },
-]
+const roles = ['Software Developer', 'AI/ML Enthusiast', 'Problem Solver', 'C++ & Python Programmer']
 
-export function Contact() {
+function useTypewriter(words: string[]) {
+  const [index, setIndex] = useState(0)
+  const [text, setText] = useState('')
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    const word = words[index % words.length]
+    const done = !deleting && text === word
+    const empty = deleting && text === ''
+
+    const timeout = setTimeout(() => {
+      if (done) return setDeleting(true)
+
+      if (empty) {
+        setDeleting(false)
+        setIndex((i) => i + 1)
+        return
+      }
+
+      setText(deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1))
+    }, done ? 1600 : deleting ? 40 : 80)
+
+    return () => clearTimeout(timeout)
+  }, [text, deleting, index, words])
+
+  return text
+}
+
+export function Hero() {
+  const typed = useTypewriter(roles)
+
   return (
-    <section id="contact" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <Reveal>
-          <div className="relative isolate overflow-hidden rounded-3xl border border-border bg-card px-6 py-14 md:px-14 md:py-20">
-            <div aria-hidden="true" className="absolute inset-0 -z-10">
-              <div className="absolute -left-20 -top-20 size-80 rounded-full bg-brand-blue/25 blur-[100px]" />
-              <div className="absolute -bottom-24 -right-16 size-96 rounded-full bg-brand-violet/25 blur-[100px]" />
-              <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
-            </div>
-
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-brand-blue">Contact</p>
-              <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-5xl">
-                {"Let's build something "}
-                <span className="text-gradient">great together</span>
-              </h2>
-              <p className="mt-4 text-pretty leading-relaxed text-muted-foreground md:text-lg">
-                {"I'm open to internships, collaborations and exciting opportunities. The best way to reach me is through LinkedIn."}
-              </p>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 font-medium text-white shadow-xl shadow-brand-violet/30 transition-transform hover:scale-[1.03]"
-              >
-                <LinkedinIcon className="size-4" />
-                Connect on LinkedIn
-              </a>
-            </div>
-
-            <ul className="mx-auto mt-12 grid max-w-4xl gap-4 md:grid-cols-3">
-              {channels.map((channel) => (
-                <li key={channel.label}>
-                  <a
-                    href={channel.href}
-                    {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="group flex items-center gap-4 rounded-2xl border border-border bg-background/60 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-brand-violet/40"
-                  >
-                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground transition-colors group-hover:text-brand-blue">
-                      <channel.icon className="size-5" />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-medium">{channel.label}</span>
-                      <span className="block truncate text-xs text-muted-foreground">{channel.value}</span>
-                    </span>
-                    <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <ProfessionalPresence />
-          </div>
-        </Reveal>
+    <section id="home" className="relative isolate flex min-h-svh items-center overflow-hidden pt-24 pb-16">
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        <div className="animate-float-slow absolute -left-32 top-10 size-[28rem] rounded-full bg-brand-blue/25 blur-[120px]" />
+        <div
+          className="animate-float-slow absolute -right-24 bottom-0 size-[30rem] rounded-full bg-brand-violet/25 blur-[120px]"
+          style={{ animationDelay: '-7s' }}
+        />
       </div>
+
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:px-8">
+        <div className="text-center md:text-left">
+          <div className="animate-fade-up mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+            </span>
+            Open to internships & collaborations
+          </div>
+
+          <h1 className="animate-fade-up text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
+            Hi, I'm <span className="text-gradient">Dev Bhargava</span>
+          </h1>
+
+          <p className="animate-fade-up mt-6 font-mono text-lg text-foreground/90 md:text-2xl">
+            <span className="sr-only">Aspiring Software Developer</span>
+            <span aria-hidden="true">
+              {'> '}
+              {typed}
+              <span className="animate-blink ml-0.5 inline-block h-[1.1em] w-[3px] translate-y-1 bg-brand-violet" />
+            </span>
+          </p>
+
+          <p className="animate-fade-up mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground md:text-lg">
+            A B.Tech Computer Science and Engineering (AI & ML) student at Jaypee University of Engineering and
+            Technology, passionate about building intelligent, efficient software and solving problems with data
+            structures & algorithms.
+          </p>
+
+          <div className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row md:justify-start">
+            <a
+              href="#projects"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 font-medium text-white shadow-xl shadow-brand-violet/25 transition-transform hover:scale-[1.03] sm:w-auto"
+            >
+              View my work
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-secondary/50 px-6 py-3 font-medium text-foreground backdrop-blur transition-colors hover:bg-secondary sm:w-auto"
+            >
+              <Sparkles className="size-4 text-brand-blue" />
+              Let's connect
+            </a>
+          </div>
+
+          <div className="animate-fade-up mt-10 flex items-center justify-center gap-5 text-muted-foreground md:justify-start">
+            <a href={site.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+              <GithubIcon className="size-5" />
+              <span className="sr-only">GitHub</span>
+            </a>
+
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+              <LinkedinIcon className="size-5" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+
+            <a href={site.leetcode} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+              <LeetcodeIcon className="size-5" />
+              <span className="sr-only">LeetCode</span>
+            </a>
+
+            <span className="h-4 w-px bg-border" aria-hidden="true" />
+
+            <span className="inline-flex items-center gap-1.5 text-sm">
+              <MapPin className="size-4" />
+              India
+            </span>
+          </div>
+        </div>
+
+        <div className="animate-fade-up mx-auto w-full max-w-sm">
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-border bg-secondary/50 p-2 shadow-2xl shadow-brand-violet/20">
+            <Image
+              src="/images/profile.jpeg"
+              alt="Dev Bhargava"
+              fill
+              priority
+              className="rounded-[1.7rem] object-cover"
+              sizes="(max-width: 768px) 80vw, 400px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <a
+        href="#about"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground md:[@media(min-height:760px)]:flex"
+      >
+        Scroll
+        <ArrowDown className="size-4 animate-bounce" />
+      </a>
     </section>
   )
 }
