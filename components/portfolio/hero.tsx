@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, ArrowDown, MapPin, Sparkles } from 'lucide-react'
 import { site } from '@/lib/site'
-import { GithubIcon, LinkedinIcon } from './brand-icons'
+import { GithubIcon, LeetcodeIcon, LinkedinIcon } from './brand-icons'
 
 const roles = ['Software Developer', 'AI/ML Enthusiast', 'Problem Solver', 'C++ & Python Programmer']
 
@@ -85,8 +85,9 @@ export function Hero() {
             className="animate-fade-up mx-auto mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground md:text-lg"
             style={{ animationDelay: '360ms' }}
           >
-            A B.Tech student passionate about building intelligent, efficient software. I enjoy solving problems with
-            data structures & algorithms and turning ideas into real-world AI-powered solutions.
+            A B.Tech Computer Science and Engineering (AI & ML) student at Jaypee University of Engineering and
+            Technology, passionate about building intelligent, efficient software and solving problems with data
+            structures & algorithms.
           </p>
 
           <div
@@ -120,6 +121,10 @@ export function Hero() {
             <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
               <LinkedinIcon className="size-5" />
               <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href={site.leetcode} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+              <LeetcodeIcon className="size-5" />
+              <span className="sr-only">LeetCode</span>
             </a>
             <span className="h-4 w-px bg-border" aria-hidden="true" />
             <span className="inline-flex items-center gap-1.5 text-sm">

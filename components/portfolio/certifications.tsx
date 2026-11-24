@@ -2,48 +2,35 @@ import { Award, BadgeCheck, ExternalLink } from 'lucide-react'
 import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
-const certifications = [
+type Certification = {
+  title: string
+  issuer: string
+  date: string
+  skills: string[]
+  url: string
+}
+
+const certifications: Certification[] = [
   {
-    title: 'Python for Data Science',
-    issuer: 'NPTEL',
-    date: '2025',
-    skills: ['Python', 'NumPy', 'Pandas'],
-    url: 'https://nptel.ac.in',
-  },
-  {
-    title: 'Machine Learning Specialization',
-    issuer: 'Coursera · DeepLearning.AI',
-    date: '2025',
-    skills: ['Supervised Learning', 'Neural Networks'],
-    url: 'https://www.coursera.org/specializations/machine-learning-introduction',
-  },
-  {
-    title: 'Data Structures & Algorithms in C++',
-    issuer: 'Coding Ninjas',
-    date: '2025',
-    skills: ['C++', 'DSA'],
-    url: 'https://www.codingninjas.com',
-  },
-  {
-    title: 'SQL (Intermediate)',
-    issuer: 'HackerRank',
-    date: '2025',
-    skills: ['SQL', 'Joins', 'Aggregation'],
-    url: 'https://www.hackerrank.com/skills-verification',
-  },
-  {
-    title: 'Introduction to Artificial Intelligence',
-    issuer: 'IBM SkillsBuild',
-    date: '2025',
-    skills: ['AI Fundamentals', 'Ethics'],
-    url: 'https://skillsbuild.org',
-  },
-  {
-    title: 'Database Management Systems',
+    title: 'C++ Standard Template Library Algorithms and Operations',
     issuer: 'Infosys Springboard',
-    date: '2025',
-    skills: ['DBMS', 'Normalization'],
-    url: 'https://infyspringboard.onwingspan.com',
+    date: 'Completed Nov 18, 2026',
+    skills: ['C++', 'STL', 'Algorithms'],
+    url: '/certificate/cpp-stl.pdf',
+  },
+  {
+    title: 'Database Fundamentals: Database Concepts',
+    issuer: 'Infosys Springboard',
+    date: 'Completed Nov 18, 2026',
+    skills: ['DBMS', 'Database Concepts'],
+    url: '/certificate/database-fundamentals.pdf',
+  },
+  {
+    title: 'Database Design',
+    issuer: 'Infosys Springboard',
+    date: 'Completed Nov 17, 2026',
+    skills: ['Data Modeling', 'Schema Design'],
+    url: '/certificate/database-design.pdf',
   },
 ]
 
@@ -85,9 +72,9 @@ export function Certifications() {
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue transition-colors hover:text-brand-violet"
+                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-brand px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-violet/20 transition-transform hover:scale-[1.03]"
                 >
-                  View credential
+                  View Certificate
                   <ExternalLink className="size-3.5" />
                   <span className="sr-only">for {cert.title}</span>
                 </a>
