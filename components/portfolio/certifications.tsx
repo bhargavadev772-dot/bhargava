@@ -1,4 +1,4 @@
-import { Award, BadgeCheck, ExternalLink } from 'lucide-react'
+import { Award, BadgeCheck, Download, ExternalLink } from 'lucide-react'
 import { Reveal } from './reveal'
 import { SectionHeading } from './section-heading'
 
@@ -12,11 +12,11 @@ type Certification = {
 
 const certifications: Certification[] = [
   {
-    title: 'C++ Standard Template Library Algorithms and Operations',
+    title: 'Database Design',
     issuer: 'Infosys Springboard',
-    date: 'Completed Nov 18, 2026',
-    skills: ['C++', 'STL', 'Algorithms'],
-    url: '/certificate/cpp-stl.pdf',
+    date: 'Completed Nov 17, 2026',
+    skills: ['Data Modeling', 'Schema Design'],
+    url: '/certificate/database-design.pdf',
   },
   {
     title: 'Database Fundamentals: Database Concepts',
@@ -26,11 +26,11 @@ const certifications: Certification[] = [
     url: '/certificate/database-fundamentals.pdf',
   },
   {
-    title: 'Database Design',
+    title: 'C++ Standard Template Library Algorithms and Operations',
     issuer: 'Infosys Springboard',
-    date: 'Completed Nov 17, 2026',
-    skills: ['Data Modeling', 'Schema Design'],
-    url: '/certificate/database-design.pdf',
+    date: 'Completed Nov 18, 2026',
+    skills: ['C++', 'STL', 'Algorithms'],
+    url: '/certificate/cpp-stl.pdf',
   },
 ]
 
@@ -68,16 +68,27 @@ export function Certifications() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-brand px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-violet/20 transition-transform hover:scale-[1.03]"
-                >
-                  View Certificate
-                  <ExternalLink className="size-3.5" />
-                  <span className="sr-only">for {cert.title}</span>
-                </a>
+                <div className="mt-6 flex flex-wrap items-center gap-2">
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand-violet/20 transition-transform hover:scale-[1.03]"
+                  >
+                    View Certificate
+                    <ExternalLink className="size-3.5" aria-hidden="true" />
+                    <span className="sr-only">for {cert.title} (opens PDF in a new tab)</span>
+                  </a>
+                  <a
+                    href={cert.url}
+                    download
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-blue/40 hover:bg-secondary"
+                  >
+                    <Download className="size-3.5" aria-hidden="true" />
+                    Download
+                    <span className="sr-only">{cert.title} certificate PDF</span>
+                  </a>
+                </div>
               </article>
             </Reveal>
           ))}
